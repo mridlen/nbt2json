@@ -58,19 +58,19 @@ All values are HEXADECIMAL (except strings).
 They have been converted from big endian to little endian for your editing pleasure.
 
 Payload Types:
-01 - 1 byte payload (2 hex chars)
-02 - 2 byte short (4 hex chars)
-03 - 4 byte (8 hex chars)
-04 - 8 byte long int (16 hex chars)
-05 - 4 byte floating point (8 hex chars)
-06 - 8 byte double floating point (16 hex chars)
-07 - not implemented
-08 - string payload
-09 - tag list - a series of payloads (Types 01 through 06 supported)
-0a - compound tag (sort of like a folder where more tags can live under it)
-0b - not implemented
-0c - not implemented
-00 - end tag (closes out a compound tag) - these do not appear in the json file but they are added back in when it is recompiled
+- 01 - 1 byte payload (2 hex chars)
+- 02 - 2 byte short (4 hex chars)
+- 03 - 4 byte (8 hex chars)
+- 04 - 8 byte long int (16 hex chars)
+- 05 - 4 byte floating point (8 hex chars)
+- 06 - 8 byte double floating point (16 hex chars)
+- 07 - not implemented
+- 08 - string payload
+- 09 - tag list - a series of payloads (Types 01 through 06 supported)
+- 0a - compound tag (sort of like a folder where more tags can live under it)
+- 0b - not implemented
+- 0c - not implemented
+- 00 - end tag (closes out a compound tag) - these do not appear in the json file but they are added back in when it is recompiled
 
 Regarding type 09 - here is how it is decoded from the hex code
 ```
