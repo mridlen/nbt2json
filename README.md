@@ -55,7 +55,18 @@ cat level.dat | xxd -ps
 Then just copy and paste the text into the bug report.
 
 All values are HEXADECIMAL (except strings).
-They have been converted from big endian to little endian for your editing pleasure.
+They have been converted from little endian to big endian for your editing pleasure.
+(It looks like Bedrock uses little endian and Java uses big endian)
+Example:
+```
+Decimal: 11,111
+Hex: 2B67
+Big Endian 2 byte short :       2B 67
+Little Endian 2 byte... :       67 2B
+Big Endian 4 byte int   : 00 00 2B 67
+Little Endian 4 byte int: 67 2B 00 00 
+single byte values do not have endian-ness to them
+```
 
 Payload Types:
 - 01 - 1 byte payload (2 hex chars)
