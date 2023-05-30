@@ -27,20 +27,23 @@ Extract your level.dat to json format
 ```
 ./nbt2json.sh level.dat
 ```
-
-Now you have a level.dat.json file. You can edit this file.
-
 Then recompile it into a level.dat
 ```
 ./json2nbt.sh level.dat.json
 ```
+Then compare the two files to make sure they are identical:
+```
+root@minecraft:~# diff level.dat level.dat.json.compiled.dat
+root@minecraft:~#             <---- this returned a command prompt, so they are the same
+```
+
 It will be saved into level.dat.json.compiled.dat - this is your new level.dat
 
 Replace it at your own risk!!!
 
-If you have hexdump or hexyl installed, you can do a diff on the files.
+If you have hexdump or hexyl installed, you can do a more robust diff on the files.
 ```
-diff <(level.dat) <(level.dat.json.compiled.dat)
+diff <(hexyl level.dat) <(hexyl level.dat.json.compiled.dat)
 ```
 
 If you convert the file from nbt to json and then back to nbt without editing it, the files should be identical.
@@ -85,3 +88,12 @@ Regarding type 09 - here is how it is decoded from the hex code
 	  00 00 00 00
 ```
 1.13.53.1 corresponds to 1.19.83.1 in decimal
+
+The level.dat also has an 8 byte header that looks like this:
+```
+0a 00 00 00 # first 4 characters I don't think have any significance
+80 0a 00 00 # these 4 characters are a 4 byte big endian integer value for number of characters in the rest of the file
+
+00 00 0a 80 # the byte order reversed - this is little endian format. It corresponds to decimal 2688 - the rest of the file will take up this many bytes
+```
+The json2nbt script takes this header information into account.
