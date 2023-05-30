@@ -100,11 +100,11 @@ Regarding type 09 - here is how it is decoded from the hex code
 ```
 1.13.53.1 corresponds to 1.19.83.1 in decimal
 
-The level.dat also has an 8 byte header that looks like this:
+The level.dat also has an 8 byte header that looks like this (Bedrock only):
 ```
 0a 00 00 00 # first 4 characters I don't think have any significance
-80 0a 00 00 # these 4 characters are a 4 byte big endian integer value for number of characters in the rest of the file
+80 0a 00 00 # these 4 characters are a 4 byte little endian integer value for number of characters in the rest of the file
 
-00 00 0a 80 # the byte order reversed - this is little endian format. It corresponds to decimal 2688 - the rest of the file will take up this many bytes
+00 00 0a 80 # the byte order reversed - this is big endian format. It corresponds to decimal 2688 - the rest of the file will take up this many bytes
 ```
 The json2nbt script takes this header information into account.
