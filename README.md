@@ -1,5 +1,6 @@
 # nbt2json
-Minecraft level.dat tool for Bedrock edition
+Minecraft level.dat tool for Bedrock edition and Java edition
+Other types of NBT data besides level.dat have not been tested at all.
 
 Tested on Ubuntu only.
 
